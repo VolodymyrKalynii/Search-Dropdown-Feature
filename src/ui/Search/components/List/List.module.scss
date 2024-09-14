@@ -1,0 +1,15 @@
+.list {
+    border-width: 0 1px 1px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-color: #8D929F;
+}
+
+.showMore {
+    padding: 0 18px;
+    height: 42px;
+}
