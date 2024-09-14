@@ -9,17 +9,16 @@ import { CATEGORY_NAMES_RESOLVER } from '../../contracts';
 import styles from './Category.module.scss';
 
 export const Category: FC<SectionProps> = ({ searchedValue, category, onItemClick, onMoreClick }) => {
-    const [catName, catData] = category;
+    const [categoryName, list] = category;
 
-    const itemsQty = catData.length;
-    const isShowMoreButton = itemsQty > DEFAULT_LIST_ITEMS_TO_SHOW_QTY;
-    const shownItems = [...catData.slice(0, DEFAULT_LIST_ITEMS_TO_SHOW_QTY)];
+    const isMoreItemsAvailable = list.length > DEFAULT_LIST_ITEMS_TO_SHOW_QTY;
+    const shownItems = isMoreItemsAvailable ? list.slice(0, DEFAULT_LIST_ITEMS_TO_SHOW_QTY) : list;
 
     return (
         <div className={styles.category}>
             <div className={styles.titleWrapper}>
-                <h4 className={styles.title}>{CATEGORY_NAMES_RESOLVER[catName]}</h4>
-                {isShowMoreButton && <Button text="more" onClick={() => onMoreClick?.(catName)} />}
+                <h4 className={styles.title}>{CATEGORY_NAMES_RESOLVER[categoryName]}</h4>
+                {isMoreItemsAvailable && <Button text="more" onClick={() => onMoreClick?.(categoryName)} />}
             </div>
             <Items searchedValue={searchedValue} items={shownItems} onItemClick={onItemClick} />
         </div>
