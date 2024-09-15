@@ -38,7 +38,7 @@ export const Input: FC<InputProps> = ({ onInput, onInputClick, onAdvancedClick }
             />
             <div className={styles.controls}>
                 {searchStr && <button className={styles.close} onClick={handleCloseClick} />}
-                <Button text="Adanced" onClick={onAdvancedClick} />
+                <Button onClick={onAdvancedClick}>Adanced</Button>
             </div>
         </div>
     );

@@ -20,8 +20,8 @@ export const List: FC<ListProps> = ({ searchedValue, list, onItemClick, onMoreCl
         ))}
         <Button
             className={styles.showMore}
-            text={`See more results for “${searchedValue}”`}
-            onClick={() => onMoreResultsClick?.(searchedValue)}
-        />
+            onClick={() => onMoreResultsClick?.(searchedValue)}>
+            See more results for “{searchedValue}”
+        </Button>
     </div>
 );

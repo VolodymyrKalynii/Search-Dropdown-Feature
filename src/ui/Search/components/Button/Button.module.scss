@@ -5,6 +5,9 @@
     border: 0;
     cursor: pointer;
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
         color: #00248f;
