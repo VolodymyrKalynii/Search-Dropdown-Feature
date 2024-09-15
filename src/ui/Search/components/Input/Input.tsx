@@ -14,7 +14,7 @@ export const Input: FC<InputProps> = ({
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            const searchedValue = searchStr.toLowerCase();
+            const searchedValue = searchStr.toLowerCase().trim();
 
             onInput(searchedValue);
         }, DEBOUNCE_INPUT_DELAY);
