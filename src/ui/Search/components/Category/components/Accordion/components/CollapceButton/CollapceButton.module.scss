@@ -1,0 +1,9 @@
+.button {
+    width: 13px;
+    height: 16px;
+    transition: .5s ease-in-out;
+
+    &.active {
+        rotate: 180deg;
+    }
+}
