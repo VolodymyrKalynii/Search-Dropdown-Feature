@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export const getContent = (value: string, searchedValue = '', getMatchedValueCompoent: (content: ReactNode) => JSX.Element) => {
+export const getContent = (value: string, searchedValue: string, getMatchedValueCompoent: (content: ReactNode) => JSX.Element) => {
     const isMatch = !searchedValue || !value.toLowerCase().includes(searchedValue.toLowerCase());
 
     if (isMatch) {
