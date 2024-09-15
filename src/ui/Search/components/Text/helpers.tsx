@@ -1,7 +1,13 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
-export const getContent = (value: string, searchedValue: string, getMatchedValueCompoent: (content: ReactNode) => JSX.Element) => {
-    const isMatch = !searchedValue || !value.toLowerCase().includes(searchedValue.toLowerCase());
+export const getContent = (
+    value: string,
+    searchedValue: string,
+    getMatchedValueCompoent: (content: ReactNode) => JSX.Element,
+) => {
+    const isMatch =
+        !searchedValue ||
+        !value.toLowerCase().includes(searchedValue.toLowerCase());
 
     if (isMatch) {
         return <>{value}</>;
@@ -20,5 +26,5 @@ export const getContent = (value: string, searchedValue: string, getMatchedValue
             <>{getMatchedValueCompoent(match)}</>
             {afterMatch}
         </>
-    )
+    );
 };

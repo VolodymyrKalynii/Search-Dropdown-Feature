@@ -1,11 +1,15 @@
-import { useState, useEffect, FC, ChangeEvent } from 'react';
-import { DEPOUND_INPUT_DELAY } from '../../constants';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 
+import { DEPOUND_INPUT_DELAY } from '../../constants';
 import { Button } from '../Button';
 import styles from './Input.module.scss';
 import { InputProps } from './Input.types';
 
-export const Input: FC<InputProps> = ({ onInput, onInputClick, onAdvancedClick }) => {
+export const Input: FC<InputProps> = ({
+    onInput,
+    onInputClick,
+    onAdvancedClick,
+}) => {
     const [searchStr, setSearchStr] = useState<string>('');
 
     useEffect(() => {
@@ -37,7 +41,12 @@ export const Input: FC<InputProps> = ({ onInput, onInputClick, onAdvancedClick }
                 onClick={onInputClick}
             />
             <div className={styles.controls}>
-                {searchStr && <button className={styles.close} onClick={handleCloseClick} />}
+                {searchStr && (
+                    <button
+                        className={styles.close}
+                        onClick={handleCloseClick}
+                    />
+                )}
                 <Button onClick={onAdvancedClick}>Adanced</Button>
             </div>
         </div>

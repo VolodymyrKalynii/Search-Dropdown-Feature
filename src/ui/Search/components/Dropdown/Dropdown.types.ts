@@ -1,4 +1,5 @@
 import { MutableRefObject, ReactNode } from 'react';
+
 import { DropdownPosition } from '../../hooks';
 
 export type DropdownProps = Readonly<{

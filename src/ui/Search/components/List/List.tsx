@@ -1,12 +1,16 @@
-'use client';
-import { FC, Fragment } from 'react';
-import { Category, Button } from '../index';
+import React, { FC, Fragment } from 'react';
 
+import { Button, Category } from '../index';
+import styles from './List.module.scss';
 import { ListProps } from './List.types';
 
-import styles from './List.module.scss';
-
-export const List: FC<ListProps> = ({ searchedValue, list, onItemClick, onMoreClick, onMoreResultsClick }) => (
+export const List: FC<ListProps> = ({
+    searchedValue,
+    list,
+    onItemClick,
+    onMoreClick,
+    onMoreResultsClick,
+}) => (
     <div className={styles.list}>
         {list.map((category) => (
             <Fragment key={category[0]}>
@@ -20,7 +24,8 @@ export const List: FC<ListProps> = ({ searchedValue, list, onItemClick, onMoreCl
         ))}
         <Button
             className={styles.showMore}
-            onClick={() => onMoreResultsClick?.(searchedValue)}>
+            onClick={() => onMoreResultsClick?.(searchedValue)}
+        >
             See more results for “{searchedValue}”
         </Button>
     </div>

@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import { getListByCategories } from '../../helpers';
+import React, { FC } from 'react';
 
+import { getListByCategories } from '../../helpers';
 import { List } from '../List';
 import { DropdownContentProps } from './DropdownContent.types';
 

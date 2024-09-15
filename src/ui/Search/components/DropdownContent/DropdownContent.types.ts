@@ -1,6 +1,7 @@
-import { DropdownEventHandlers } from '../../Search.types';
+import { DropdownEventHandlers, List } from '../../Search.types';
 
 export type DropdownContentProps = Readonly<{
-    filteredResults: any;
+    filteredResults: List;
     searchedValue: string;
-}> & DropdownEventHandlers;
+}> &
+    DropdownEventHandlers;

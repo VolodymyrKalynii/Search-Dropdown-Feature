@@ -1,9 +1,13 @@
+import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
-import { FC } from 'react';
 
 import { DropdownProps } from './Dropdown.types';
 
-export const Dropdown: FC<DropdownProps> = ({ dropdownPosition, dropdownRef, children }) =>
+export const Dropdown: FC<DropdownProps> = ({
+    dropdownPosition,
+    dropdownRef,
+    children,
+}) =>
     createPortal(
         <div
             className="dropdown"

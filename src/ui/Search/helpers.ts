@@ -1,18 +1,21 @@
-import { List, CategoryItem } from './Search.types';
+import { CategoryItem, List } from './Search.types';
 import { checkIsStringContainsValue } from './utils';
 
 export const getListByCategories = (list: List): CategoryItem[] => {
-    const filteredListCategories = list.reduce<{ [key: string]: List }>((acc, item) => {
-        const { type } = item;
+    const filteredListCategories = list.reduce<{ [key: string]: List }>(
+        (acc, item) => {
+            const { type } = item;
 
-        if (!acc[type]) {
-            acc[type] = [];
-        }
+            if (!acc[type]) {
+                acc[type] = [];
+            }
 
-        acc[type].push(item);
+            acc[type].push(item);
 
-        return acc;
-    }, {});
+            return acc;
+        },
+        {},
+    );
 
     return Object.entries(filteredListCategories);
 };

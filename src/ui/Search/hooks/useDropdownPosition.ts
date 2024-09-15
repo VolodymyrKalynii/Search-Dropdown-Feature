@@ -1,4 +1,4 @@
-import { useState, useEffect, MutableRefObject } from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
 
 export type DropdownPosition = {
     top: number;
@@ -11,15 +11,28 @@ type UseDropdownPositionProps = {
     containerRef: MutableRefObject<HTMLDivElement | null>;
 };
 
-type UseDropdownPosition = (props: UseDropdownPositionProps) => DropdownPosition;
+type UseDropdownPosition = (
+    props: UseDropdownPositionProps,
+) => DropdownPosition;
 
-export const useDropdownPosition: UseDropdownPosition = ({ isDropdownVisible, containerRef }) => {
-    const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({ top: 0, left: 0, width: 0 });
+export const useDropdownPosition: UseDropdownPosition = ({
+    isDropdownVisible,
+    containerRef,
+}) => {
+    const [dropdownPosition, setDropdownPosition] = useState<DropdownPosition>({
+        top: 0,
+        left: 0,
+        width: 0,
+    });
 
     const calculateDropdownPosition = () => {
         if (containerRef.current) {
             const rect = containerRef.current.getBoundingClientRect();
-            setDropdownPosition({ top: rect.bottom, left: rect.left, width: rect.width });
+            setDropdownPosition({
+                top: rect.bottom,
+                left: rect.left,
+                width: rect.width,
+            });
         }
     };
 

@@ -1,25 +1,35 @@
-'use client';
-import { useState, useEffect, useRef } from 'react';
-import { Input, DropdownContent, Dropdown } from './components';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { List, SearchProps } from './Search.types';
-import { checkIsClickOnEmement } from './utils';
-import { useDropdownPosition } from './hooks';
-
-import styles from './Search.module.scss';
+import { Dropdown, DropdownContent, Input, MainWrapper } from './components';
 import { filterListByValue } from './helpers';
+import { useDropdownPosition } from './hooks';
+import { checkIsClickOnEmement } from './utils';
 
-export const Search = ({ initilaList, onItemClick, onMoreClick, onMoreResultsClick, onAdvancedClick }: SearchProps) => {
+export const Search = ({
+    initilaList,
+    onItemClick,
+    onMoreClick,
+    onMoreResultsClick,
+    onAdvancedClick,
+}: SearchProps) => {
     const dropdownRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
     const [searchedValue, setSearchedValue] = useState<string>('');
     const [filteredResults, setFilteredResults] = useState<List>([]);
-    const dropdownPosition = useDropdownPosition({ isDropdownVisible, containerRef });
+    const dropdownPosition = useDropdownPosition({
+        isDropdownVisible,
+        containerRef,
+    });
 
     useEffect(() => {
         if (searchedValue.length > 0) {
-            const list: List = filterListByValue({ list: initilaList, searchedValue });
+            const list: List = filterListByValue({
+                list: initilaList,
+                searchedValue,
+            });
 
             setFilteredResults(list);
             setIsDropdownVisible(true);
@@ -30,13 +40,17 @@ export const Search = ({ initilaList, onItemClick, onMoreClick, onMoreResultsCli
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (!checkIsClickOnEmement(dropdownRef, event) && !checkIsClickOnEmement(containerRef, event)) {
+            if (
+                !checkIsClickOnEmement(dropdownRef, event) &&
+                !checkIsClickOnEmement(containerRef, event)
+            ) {
                 setIsDropdownVisible(false);
             }
         };
 
         document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        return () =>
+            document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     const onInput = (value: string) => {
@@ -44,7 +58,9 @@ export const Search = ({ initilaList, onItemClick, onMoreClick, onMoreResultsCli
     };
 
     const onInputClick = () => {
-        searchedValue && setIsDropdownVisible(true);
+        if (searchedValue) {
+            setIsDropdownVisible(true);
+        }
     };
 
     const handleAdvancedClick = () => {
@@ -52,12 +68,17 @@ export const Search = ({ initilaList, onItemClick, onMoreClick, onMoreResultsCli
     };
 
     return (
-        <div className={styles.search} ref={containerRef}>
-            <Input onInput={onInput} onInputClick={onInputClick} onAdvancedClick={handleAdvancedClick} />
+        <MainWrapper ref={containerRef}>
+            <Input
+                onInput={onInput}
+                onInputClick={onInputClick}
+                onAdvancedClick={handleAdvancedClick}
+            />
             {isDropdownVisible && (
                 <Dropdown
                     dropdownRef={dropdownRef}
-                    dropdownPosition={dropdownPosition}>
+                    dropdownPosition={dropdownPosition}
+                >
                     <DropdownContent
                         filteredResults={filteredResults}
                         searchedValue={searchedValue}
@@ -67,6 +88,6 @@ export const Search = ({ initilaList, onItemClick, onMoreClick, onMoreResultsCli
                     />
                 </Dropdown>
             )}
-        </div>
+        </MainWrapper>
     );
 };
