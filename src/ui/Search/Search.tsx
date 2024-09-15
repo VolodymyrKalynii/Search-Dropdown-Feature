@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { List, SearchProps } from './Search.types';
 import { Dropdown, DropdownContent, Input, MainWrapper } from './components';
 import { filterListByValue } from './helpers';
-import { useDropdownPosition } from './hooks';
-import { checkIsClickOnEmement } from './utils';
+import { useClickOutside, useDropdownPosition } from './hooks';
 
 export const Search = ({
     initilaList,
@@ -38,20 +37,7 @@ export const Search = ({
         }
     }, [searchedValue]);
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                !checkIsClickOnEmement(dropdownRef, event) &&
-                !checkIsClickOnEmement(containerRef, event)
-            ) {
-                setIsDropdownVisible(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () =>
-            document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
+    useClickOutside({dropdownRef, containerRef, onClickOutside: () => setIsDropdownVisible(false)})
 
     const onInput = (value: string) => {
         setSearchedValue(value);
