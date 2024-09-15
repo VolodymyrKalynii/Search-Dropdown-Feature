@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 
-import { DEBOUNCE_INPUT_DELAY } from '../../constants';
+import { useDebouncedInput } from '../../hooks';
 import { Button } from '../Button';
 import styles from './Input.module.scss';
 import { InputProps } from './Input.types';
@@ -12,14 +12,7 @@ export const Input: FC<InputProps> = ({
 }) => {
     const [searchStr, setSearchStr] = useState<string>('');
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            const searchedValue = searchStr.toLowerCase().trim();
-
-            onInput(searchedValue);
-        }, DEBOUNCE_INPUT_DELAY);
-        return () => clearTimeout(timeoutId);
-    }, [searchStr]);
+    useDebouncedInput({ searchStr, onInput });
 
     const handleCloseClick = () => {
         setSearchStr('');
