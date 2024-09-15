@@ -13,6 +13,7 @@
 }
 
 .category {
+    user-select: none;
     &:not(&:last-child) {
         border-bottom: 1px solid #E0E1E4;
     }
