@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 
-import { DEPOUND_INPUT_DELAY } from '../../constants';
+import { DEBOUNCE_INPUT_DELAY } from '../../constants';
 import { Button } from '../Button';
 import styles from './Input.module.scss';
 import { InputProps } from './Input.types';
@@ -17,7 +17,7 @@ export const Input: FC<InputProps> = ({
             const searchedValue = searchStr.toLowerCase();
 
             onInput(searchedValue);
-        }, DEPOUND_INPUT_DELAY);
+        }, DEBOUNCE_INPUT_DELAY);
         return () => clearTimeout(timeoutId);
     }, [searchStr]);
 
