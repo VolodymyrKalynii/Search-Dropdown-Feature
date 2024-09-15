@@ -37,7 +37,11 @@ export const Search = ({
         }
     }, [searchedValue]);
 
-    useClickOutside({dropdownRef, containerRef, onClickOutside: () => setIsDropdownVisible(false)})
+    useClickOutside({
+        dropdownRef,
+        containerRef,
+        onClickOutside: () => setIsDropdownVisible(false),
+    });
 
     const onInput = (value: string) => {
         setSearchedValue(value);
