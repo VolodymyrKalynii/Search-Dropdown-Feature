@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Input, DropdownContent, Dropdown } from './components';
-import { ListItem, SearchProps } from './Search.types';
+import { List, SearchProps } from './Search.types';
 import { checkIsClickOnEmement } from './utils';
 import { useDropdownPosition } from './hooks';
 
@@ -14,12 +14,12 @@ export const Search = ({ initilaList, onItemClick, onMoreClick, onMoreResultsCli
 
     const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
     const [searchedValue, setSearchedValue] = useState<string>('');
-    const [filteredResults, setFilteredResults] = useState<ListItem[]>([]);
+    const [filteredResults, setFilteredResults] = useState<List>([]);
     const dropdownPosition = useDropdownPosition({ isDropdownVisible, containerRef });
 
     useEffect(() => {
         if (searchedValue.length > 0) {
-            const list: ListItem[] = filterListByValue({ list: initilaList, searchedValue });
+            const list: List = filterListByValue({ list: initilaList, searchedValue });
 
             setFilteredResults(list);
             setIsDropdownVisible(true);
