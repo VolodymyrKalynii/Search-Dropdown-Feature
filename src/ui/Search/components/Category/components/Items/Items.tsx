@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import { Text } from '../Text';
+import { Text } from '../../../Text';
 
 import { ItemsProps } from './Items.types';
 import styles from './Items.module.scss';
