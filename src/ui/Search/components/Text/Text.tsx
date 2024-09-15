@@ -1,26 +1,17 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
-import styles from './Text.module.scss';
+import { getContent } from './helpers';
 import { TextProps } from './Text.types';
 
+import styles from './Text.module.scss';
+
 export const Text: FC<TextProps> = ({ value, searchedValue = '', className }) => {
-    if (!searchedValue || !value.toLowerCase().includes(searchedValue.toLowerCase())) {
-        return <span className={clsx(styles.text, className)}>{value}</span>;
-    }
-
-    const startIndex = value.toLowerCase().indexOf(searchedValue.toLowerCase());
-    const endIndex = startIndex + searchedValue.length;
-
-    const beforeMatch = value.slice(0, startIndex);
-    const match = value.slice(startIndex, endIndex);
-    const afterMatch = value.slice(endIndex);
+    const getMatchedValueCompoent = (content: ReactNode) => <span className={styles.searchedValue}>{content}</span>;
 
     return (
         <span className={clsx(styles.text, className)}>
-            {beforeMatch}
-            <span className={styles.searchedValue}>{match}</span>
-            {afterMatch}
+            {getContent(value, searchedValue, getMatchedValueCompoent)}
         </span>
-    );
+    )
 };
