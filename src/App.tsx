@@ -4,7 +4,7 @@ import styles from './App.module.scss';
 import { ListItem, Search } from './ui';
 
 function App() {
-    const initilaList: ListItem[] = [
+    const initiaList: ListItem[] = [
         { type: 'symbol', name: 'EA', description: 'Electronic Arts Inc.' },
         { type: 'symbol', name: 'RA-USD', description: 'EagleCoin USD' },
         { type: 'symbol', name: 'EADSF', description: 'Airbus Se' },
@@ -43,7 +43,7 @@ function App() {
     return (
         <div className={styles.app}>
             <Search
-                initilaList={initilaList}
+                initiaList={initiaList}
                 onItemClick={onItemClick}
                 onMoreClick={onMoreClick}
                 onMoreResultsClick={onMoreResultsClick}

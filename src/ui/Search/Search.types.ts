@@ -14,7 +14,7 @@ export type DropdownEventHandlers = Readonly<{
 }>;
 
 export type SearchProps = Readonly<{
-    initilaList: List;
+    initiaList: List;
     onAdvancedClick?: (searchedValue: string) => void;
 }> &
     DropdownEventHandlers;

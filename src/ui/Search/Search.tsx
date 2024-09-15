@@ -6,7 +6,7 @@ import { filterListByValue } from './helpers';
 import { useClickOutside, useDropdownPosition } from './hooks';
 
 export const Search = ({
-    initilaList,
+    initiaList,
     onItemClick,
     onMoreClick,
     onMoreResultsClick,
@@ -26,7 +26,7 @@ export const Search = ({
     useEffect(() => {
         if (searchedValue.length > 0) {
             const list: List = filterListByValue({
-                list: initilaList,
+                list: initiaList,
                 searchedValue,
             });
 
