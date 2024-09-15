@@ -68,7 +68,7 @@ export const Search = ({
     };
 
     return (
-        <MainWrapper ref={containerRef}>
+        <MainWrapper refObject={containerRef}>
             <Input
                 onInput={onInput}
                 onInputClick={onInputClick}
