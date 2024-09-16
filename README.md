@@ -1,8 +1,10 @@
 # How to see the result
 
+
 You have two ways how to see the reuslt.
 -Open static files
 -Run the project
+-Check the result [online](https://volodymyrkalynii.github.io/Search-Dropdown-Feature/build/)
 
 ## How to Open static files
 1. Open 'build' directory
